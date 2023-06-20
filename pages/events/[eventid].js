@@ -4,6 +4,8 @@ import EventSummary from "@/components/event-detail/event-summary";
 import { getEventById, getFeaturedEvents } from "@/helper/api-utils";
 import ErrorAlert from "@/components/ui/error-alert/error-alert";
 import { Fragment } from "react";
+import Head from "next/head";
+import Comments from "@/components/input/comments";
 
 function EventDetailsPage(props) {
   const eventData = props.event;
@@ -18,6 +20,9 @@ function EventDetailsPage(props) {
 
   return (
     <Fragment>
+        <Head>
+            <title>{eventData.title}</title>
+        </Head>
       <EventSummary title={eventData.title} />
       <EventLogistics
         date={eventData.date}
@@ -28,6 +33,7 @@ function EventDetailsPage(props) {
       <EventContent>
         <p>{eventData.description}</p>
       </EventContent>
+      <Comments eventId={eventData.id}/>
     </Fragment>
   );
 }
