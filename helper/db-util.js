@@ -18,7 +18,6 @@ export async function insertDocument(client, collection, document) {
 }
 
 export async function getAllDocuments(client, collection, sort, filter = {}) {
-    console.log(filter);
   const db = client.db();
   const allComments = await db
     .collection(collection)
